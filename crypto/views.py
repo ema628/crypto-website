@@ -45,10 +45,6 @@ def r(x):
 def r2(x):
     return round(x, -int(floor(log10(abs(x))))+3)
 
-currencies = {"usd": "$",
-                "jpy": "¥",
-                "gbp": "£"}
-
 # Create your views here.
 def index(request, c):
     config = configparser.ConfigParser()
