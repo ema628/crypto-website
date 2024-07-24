@@ -1,0 +1,300 @@
+ <html>
+    <style>
+        html {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; margin-left: 0px; } 
+        h1 {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;background-color: pink; padding: 0px 20px; font-weight: bold; float: left; margin-top: 15px;}
+        h2 {font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal}
+        form {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+        select {width: 200px; font-size: medium;}
+        input[name="search"] {display: inline-block !important; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width:fit-content; background-color: lightgray; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; float: inline-end; margin-right: 10px; margin-top: -45px; z-index: 2 !important; position: relative;} 
+        input[name='compare'] {width:fit-content; background-color: lightgray; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: medium;}
+        .search .errorlist{
+            list-style-type: none;
+            font-size: small;
+            margin-top: -17px;
+            position: absolute;
+            padding-left: 120px !important;
+        }
+        .bar {
+            margin-right: -40px !important;
+            z-index: 1 !important;
+            min-width: none !important;
+        }
+        .search{
+            padding-left: 10px;
+            float: right;
+            margin-top: 6px;
+            min-width: none !important;
+        }
+        .search .select2-selection{
+            min-width: none !important;
+            width: 200px !important;
+        }
+        .bar span.select2.select2-container{
+            min-width: 200px !important;
+            width: 200px !important;
+            margin-right: 120px;
+        }
+
+        .search .select2-selection__arrow{
+            background-color: white;
+        }
+        span.select2-dropdown{
+            min-width: none !important;
+            width: 250px !important;
+        }
+        .select2-results__option--highlighted {
+            background: #fa68ac !important;
+        }
+
+        .select2-selection__arrow {
+            background-color: pink ;
+        }
+
+        .select2-results__option[aria-selected="true"] {
+            background-color: pink !important;
+            color: #393A3B; 
+        }
+
+        .select2-results__option{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            
+        }
+        .topnav {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: pink;
+        overflow: hidden;
+        height: 70px
+        }
+
+        .topnav a {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        float: left;
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 25px 15px;
+        text-decoration: none;
+        font-size: 17px;
+        }
+
+        .selects a:hover {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: deeppink;
+        color: white;
+        }
+
+        .selects a.active {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: #fa68ac;
+        color: white;
+
+        }
+        .dropdown {
+        float: right;
+        overflow: hidden;
+        
+        }
+
+        /* Style the dropdown button to fit inside the topnav */
+        .dropdown .dropbtn {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 17px;
+        border: none;
+        outline: none;
+        color: black;
+        padding: 27px 10px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+        width: 90px;
+        font-size: small;
+        }
+
+        .dropdown-content {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        width: 90px;
+        text-align: center;
+        font-size: small;
+        }
+
+        .dropdown-content a {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        float: none;
+        color: black;
+        padding: 12px 12px;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        font-size: small;
+        }
+
+        .dropdown:hover .dropbtn {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: deeppink;
+        color: white;
+        }
+
+        .dropdown-content a:hover {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: #ddd;
+        color: black;
+        }
+
+        .dropdown:hover .dropdown-content {
+        display: block;
+        }
+        a[name="website"]{
+            font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: x-large; margin-top: -5px; font-weight: bold;
+        }
+        a:hover[name="website"]{
+            color:deeppink;
+        }
+        a:hover[name="icon"]{
+            color:deeppink;
+        }
+        a[name="icon"]{
+            margin-top: -5px;
+        }
+
+        .popup{
+            width: 50%;
+            background-color: lightgray;
+            position: absolute;
+            margin-left: 25%;
+            margin-top: 120px;
+            padding-left: 10px;
+            padding-top: 10px;
+            z-index: 2;
+            padding-bottom: 10px;
+
+        }
+        .close{
+            color:black;
+        }
+        .close:hover{
+            color: red;
+        }
+
+    </style>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    
+    </head>
+
+    <div class="topnav" id="myTopnav">
+        <h1>Compare 2 coins</h1>  
+        <a name="icon"><i class="fa fa-bookmark" style="font-size:30px" name="bookmarkicon"></i></a>
+        {# Don't forget that one ! #}
+        {% load static %}
+
+        {% block content %}
+        <div class="search">
+            <form action="" method="post">
+                <div class="bar">
+                    {% csrf_token %}
+                    {{ search.as_p }}
+
+                    <table style="display: none">
+                        {{ view.formset.empty_form }}
+                    </table>
+
+                    <table>
+                        {{ view.formset }}
+                    </table>
+                </div>               
+                <input type="submit" style="font-size: small; display: inline-block !important; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width:fit-content; background-color: lightgray; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; float: inline-end; margin-right: 10px; margin-top: -45px; z-index: 2 !important; position: relative;" name="search"  value="Search"></input>
+            </form>
+        </div>
+        
+
+        {% block footer %}
+        <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+
+        {{ search.media }}   
+        <div class="selects">
+            <div class="dropdown">
+                <button class="dropbtn">Games &#9660;
+                </button>
+                <div class="dropdown-content">
+                    <a href="http://127.0.0.1:8000/crypto/game/hangman">Hangman</a>
+                    <a href="http://127.0.0.1:8000/crypto/game/memory">Memory</a>
+                </div>
+            </div>
+            <a class="active" href="http://127.0.0.1:8000/crypto/form/"; style="float: right;"; >Compare</a>
+            <a href="http://127.0.0.1:8000/crypto/usd"; style="float: right;">Home</a>
+        
+        </div>     
+    </div>
+    <br>
+
+    {# Don't forget that one ! #}
+    {% load static %}
+    <div class="popup" >
+        <h2 style="margin-top: 0px;">My Bookmarks</h2>
+        {% for page in favpages %}
+            <a href={{page.url}} name="{{page.name}}/{{page.currency}}/{{page.time}}">{{page.name}} {{page.currency}} {{page.time}}</a> <a class="close" name="{{page.name}}/{{page.currency}}/{{page.time}}" id="{{page.name}}/{{page.currency}}/{{page.time}}">&#10006;</a>
+            <br>
+        {% endfor %}
+    </div>
+    <script>
+        $(document).ready(function() {
+            let status=false;
+            $(".popup").hide();
+            $("i").on("click",function() {
+                if (status==false){
+                    $(".popup").show();
+                    status= true;
+                }
+                else{
+                    $(".popup").hide();
+                    status=false
+                }
+            })
+            $(".close").on("click", function(){
+                var id = $(this)[0].id;
+                var data= id.split("/");
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://127.0.0.1:8000/crypto/ajax/delete/',
+                    data: {name: data[0], currency: data[1], time: data[2]},
+                    success: function(reply){
+                        // window.location.reload();
+                        $("a[name='"+id+"']").hide();
+                    },
+                })
+            })
+        })
+    </script>
+    
+    <div>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <table style="display: none">
+                {{ view.formset.empty_form }}
+            </table>
+
+            <table>
+                {{ view.formset }}
+            </table>
+
+
+            <input type="submit" name="compare" value="Compare"/>
+        </form>
+    </div>
+    {% endblock %}
+
+    
+    <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+
+    {{ form.media }}
+
+    
+    {% endblock %}
+</html> 

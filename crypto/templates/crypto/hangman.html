@@ -1,0 +1,387 @@
+<html>
+    <style>
+        html {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; margin-left: 0px;} 
+        h1 {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;background-color: pink; padding: 10px 20px; font-weight: bold; float: left; margin-top: 5px;}
+        h2 {font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal}
+        .playagain{
+            background-color: pink ;
+            padding-left: 10px; 
+            padding-top: 5px; 
+            padding-bottom: 5px; 
+            padding-right: 10px;
+        }
+        h3 {letter-spacing: 2px;}
+        .search .errorlist{
+            list-style-type: none;
+            font-size: small;
+            margin-top: -17px;
+            position: absolute;
+            padding-left: 120px !important;
+        }
+        .bar {
+            margin-right: -40px !important;
+            z-index: 1 !important;
+            min-width: none !important;
+        }
+        .bar span.select2.select2-container{
+            min-width: 200px !important;
+            width: 200px !important;
+            margin-right: 120px;
+        }
+        .search{
+            padding-left: 10px;
+            float: right;
+            margin-top: 6px;
+            min-width: none !important;
+        }
+        .search .select2-selection{
+            min-width: none !important;
+            width: 200px !important;
+        }
+
+        .search .select2-selection__arrow{
+            background-color: white;
+        }
+        span.select2-dropdown{
+            min-width: none !important;
+            width: 250px !important;
+        }
+        .select2-results__option--highlighted {
+            background: #fa68ac !important;
+        }
+
+        .select2-selection__arrow {
+            background-color: pink ;
+        }
+
+        .select2-results__option[aria-selected="true"] {
+            background-color: pink !important;
+            color: #393A3B; 
+        }
+
+        .select2-results__option{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            
+        }
+        
+            
+        .topnav {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: pink;
+        overflow: hidden;
+        height: 70px
+        }
+
+        .topnav a {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        float: left;
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 25px 15px;
+        text-decoration: none;
+        font-size: 17px;
+        }
+
+        .selects a:hover {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: deeppink !important;
+        color: white;
+        }
+
+        .selects a.active {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: #fa68ac;
+        color: white;
+
+        }
+
+        .dropdown {
+        float: right;
+        overflow: hidden;
+        
+        }
+
+        /* Style the dropdown button to fit inside the topnav */
+        .dropdown .dropbtn {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 17px;
+        border: none;
+        outline: none;
+        color: black;
+        padding: 27px 10px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+        width: 90px;
+        font-size: small;
+        }
+
+        .dropdown-content {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        width: 90px;
+        text-align: center;
+        font-size: small;
+        }
+
+        .dropdown-content a {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        float: none;
+        color: black;
+        padding: 12px 12px;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        font-size: small;
+        }
+
+        .dropdown:hover .dropbtn {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: deeppink;
+        color: white;
+        }
+
+        .dropdown-content a:hover {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: #ddd;
+        color: black;
+        }
+
+        .dropdown:hover .dropdown-content {
+        display: block;
+        }
+        a:hover[name="icon"]{
+            color:deeppink;
+        }
+        a[name="icon"]{
+            margin-top: -5px;
+        }
+
+        .popup{
+            width: 50%;
+            background-color: lightgray;
+            position: absolute;
+            margin-left: 25%;
+            margin-top: 120px;
+            padding-left: 10px;
+            padding-top: 10px;
+            z-index: 2;
+            padding-bottom: 10px;
+
+        }
+        .close{
+            color:black;
+        }
+        .close:hover{
+            color: red;
+        }
+    </style>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <!-- <script src="js/jquery-3.7.1.min.js"></script>
+        <script src="js/rango-jquery.js"></script>    -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    
+    </head>
+    <div class="topnav" id="myTopnav">
+        <h1>Hangman</h1>
+        <a name="icon"><i class="fa fa-bookmark" style="font-size:30px" name="bookmarkicon"></i></a>
+        
+        {# Don't forget that one ! #}
+        {% load static %}
+
+        {% block content %}
+        <div class="search">
+            <form action="" method="post">
+                <div class="bar">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <table style="display: none">
+                        {{ view.formset.empty_form }}
+                    </table>
+
+                    <table>
+                        {{ view.formset }}
+                    </table>
+                </div>               
+                <input type="submit" style="font-size: small; display: inline-block !important; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width:fit-content; background-color: lightgray; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; float: inline-end; margin-right: 10px; margin-top: -45px; z-index: 2 !important; position: relative;" name="search"  value="Search"></input>
+            </form>
+        </div>
+        {% endblock %}
+
+        {% block footer %}
+        <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+
+        {{ form.media }}        
+        {% endblock %}
+        <div class="selects">
+            <div class="dropdown">
+                <button class="dropbtn">Games &#9660;
+                </button>
+                <div class="dropdown-content">
+                    <a href="http://127.0.0.1:8000/crypto/game/hangman">Hangman</a>
+                    <a href="http://127.0.0.1:8000/crypto/game/memory">Memory</a>
+                </div>
+            </div>
+            <a href="http://127.0.0.1:8000/crypto/form/"; style="float: right;"; >Compare</a>
+            <a href="http://127.0.0.1:8000/crypto/usd"; style="float: right;">Home</a>
+        
+        </div>
+    </div>
+    <div class="popup" >
+        <h2 style="margin-top: 0px;">My Bookmarks</h2>
+        {% for page in favpages %}
+            <a href={{page.url}} name="{{page.name}}/{{page.currency}}/{{page.time}}">{{page.name}} {{page.currency}} {{page.time}}</a> <a class="close" name="{{page.name}}/{{page.currency}}/{{page.time}}" id="{{page.name}}/{{page.currency}}/{{page.time}}">&#10006;</a>
+            <br>
+        {% endfor %}
+    </div>
+    <script>
+        $(document).ready(function() {
+            let status=false;
+            $(".popup").hide();
+            $("i").on("click",function() {
+                if (status==false){
+                    $(".popup").show();
+                    status= true;
+                }
+                else{
+                    $(".popup").hide();
+                    status=false
+                }
+            })
+            $(".close").on("click", function(){
+                var id = $(this)[0].id;
+                var data= id.split("/");
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://127.0.0.1:8000/crypto/ajax/delete/',
+                    data: {name: data[0], currency: data[1], time: data[2]},
+                    success: function(reply){
+                        // window.location.reload();
+                        $("a[name='"+id+"']").hide();
+                    },
+                })
+            })
+        })
+    </script>
+    <h3>{{current}}</h3>
+    
+    <script>
+        let data2 = {{data|safe}};
+        var current = data2['current'];
+        let ranges={{range|safe}};
+        let wrong_count = 0;
+        let wrong_letters = "";
+        let pics = [["    +---+", "        |", "        |", "        |", '       ==='],
+        ["    +---+", "|    O   ", "|       ", "|       ", '       ==='],
+        ["    +---+", "|    O   ", "|    |   ", "|       ", '       ==='],
+        ["    +---+", "|    O   ", "|   /|   ", "|       ", '       ==='],
+        ["    +---+", "|    O   ", "|   /|\\  ", "|       ", '       ==='],
+        ["    +---+", "|    O   ", "|   /|\\  ", "|  /    ", '       ==='],
+        ["    +---+", "|    O   ", "|   /|\\  ", "|   / \\  ", '       ==='],
+    ]
+        $(document).ready(function() {
+            $("#win").hide();
+            $("#lose").hide();
+            $("#definition").hide();
+            $("#playagain").hide();
+            $("#picture11").text(pics[0][0]);
+            $("#picture21").text(pics[0][1]);
+            $("#picture31").text(pics[0][2]);
+            $("#picture41").text(pics[0][3]);
+            $("#picture51").text(pics[0][4]);
+            for(var i = 2; i<=26 ; i++) {
+                $("#guess"+i).hide();
+            };
+            ranges.forEach(function(i){
+                $("#input"+i).keypress(function(e) {                               
+                    $.ajax({
+                        type:'GET',
+                        url:'http://127.0.0.1:8000/crypto/ajax/get_data_hangman/',
+                        data: {press: e.key, current: current, word: data2['word'], wrong_count: wrong_count, wrong_letters: wrong_letters},
+                        success: function(reply) {
+                            current = reply.current;
+                            $('#wrong_count'+String(parseInt(i)+1)).text('Wrong count: '+reply.wrong_count);
+                            $('#wrong_letters'+String(parseInt(i)+1)).text(((reply.wrong_letters).split("")).join(", "));
+                            $('#ajax-response'+i).text(reply.current);
+                            $("#input"+i).hide();
+                            $('#letter'+i).text(e.key);
+                            $('#picture1'+String(parseInt(i)+1)).text(pics[parseInt(reply.wrong_count)][0]);
+                            $('#picture2'+String(parseInt(i)+1)).text(pics[parseInt(reply.wrong_count)][1]);
+                            $('#picture3'+String(parseInt(i)+1)).text(pics[parseInt(reply.wrong_count)][2]);
+                            $('#picture4'+String(parseInt(i)+1)).text(pics[parseInt(reply.wrong_count)][3]);
+                            $('#picture5'+String(parseInt(i)+1)).text(pics[parseInt(reply.wrong_count)][4]);
+                            dones = reply.done;
+                            wrong_count = reply.wrong_count;
+                            wrong_letters = reply.wrong_letters;
+                            pic = reply.pic;                                                                               
+                            if (dones == true) {                               
+                                $("#win").show();
+                                $("#definition").show();
+                                $("#playagain").show();
+                            }
+                            else if (wrong_count == "6"){
+                                $("#lose").show();
+                                $("#definition").show();
+                                $("#playagain").show();
+                            }
+                            else {
+                                $("#guess"+String(parseInt(i)+1)).show();}
+                            }})                                                                                   
+                        })
+                    });
+                });
+    </script>
+    <div id="guess">
+        {% for i in range %}       
+            <div id="guess{{i}}">
+                <a id="picture1{{i}}"></a>
+                <br>
+                <a id="picture2{{i}}"></a>
+                <br>
+                <a id="picture3{{i}}"></a>
+                <br>
+                <a id="picture4{{i}}"></a>
+                <br>
+                <a id="picture5{{i}}"></a>
+                <br>
+                <a id = "wrong_letters{{i}}"></a>
+                <br>
+                <a id = "wrong_count{{i}}"></a>
+                <br>               
+                <br>
+                Enter a letter: <input type="text" id = "input{{i}}"> <a id = "letter{{i}}"></a>
+                <h3 id="ajax-response{{i}}"></h3>               
+            </div>               
+        {% endfor %}
+    </div>  
+    <h3 id="next"></h3>
+    <h2 id="win">You guessed the word!</h2>
+    <h2 id="lose">
+        <a>    +---+</a>
+        <br>
+        <a>|    O </a>
+        <br>
+        <a>|   /|\  </a>
+        <br>
+        <a> |   / \  </a>
+        <br>
+        <a>       ===</a>
+        <br>
+
+        You lost. 
+    </h2>
+    <h2 id="definition">The word was {{word}}.<br> Description: &nbsp;  {{description}}</h2>
+    <div id="playagain">
+        <form action="http://127.0.0.1:8000/crypto/game/hangman/">
+            <input type="submit" value="Play again" style="background-color: pink ; padding-left: 10px;  padding-top: 5px;  padding-bottom: 5px;  padding-right: 10px; font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"/>
+        </form>
+    </div>
+    
+</html>

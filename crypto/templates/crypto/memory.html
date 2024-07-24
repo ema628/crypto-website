@@ -1,0 +1,456 @@
+<html>
+    <style>
+        html {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; margin-left: 0px; } 
+        h1 {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;background-color: pink; padding: 10px 20px; font-weight: bold; float: left; margin-top: 5px;}
+        h2 {font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal}
+        .playagain{
+            background-color: pink ;
+            padding-left: 10px; 
+            padding-top: 5px; 
+            padding-bottom: 5px; 
+            padding-right: 10px;
+        }
+        h3 {letter-spacing: 2px;}
+        .search .errorlist{
+            list-style-type: none;
+            font-size: small;
+            margin-top: -17px;
+            position: absolute;
+            padding-left: 120px !important;
+        }
+        .bar {
+            margin-right: -40px !important;
+            z-index: 1 !important;
+            min-width: none !important;
+        }
+        .bar span.select2.select2-container{
+            min-width: 200px !important;
+            width: 200px !important;
+            margin-right: 120px;
+        }
+        .search{
+            padding-left: 10px;
+            float: right;
+            margin-top: 6px;
+            min-width: none !important;
+        }
+        .search .select2-selection{
+            min-width: none !important;
+            width: 200px !important;
+        }
+
+        .search .select2-selection__arrow{
+            background-color: white;
+        }
+        span.select2-dropdown{
+            min-width: none !important;
+            width: 250px !important;
+        }
+        .select2-results__option--highlighted {
+            background: #fa68ac !important;
+        }
+
+        .select2-selection__arrow {
+            background-color: pink ;
+        }
+
+        .select2-results__option[aria-selected="true"] {
+            background-color: pink !important;
+            color: #393A3B; 
+        }
+
+        .select2-results__option{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            
+        }
+        
+            
+        .topnav {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: pink;
+        overflow: hidden;
+        height: 70px
+        }
+
+        .topnav a {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        float: left;
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 25px 15px;
+        text-decoration: none;
+        font-size: 17px;
+        }
+
+        .selects a:hover {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: deeppink !important;
+        color: white;
+        }
+
+        .selects a.active {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: #fa68ac;
+        color: white;
+
+        }
+
+        .dropdown {
+        float: right;
+        overflow: hidden;
+        
+        }
+
+        /* Style the dropdown button to fit inside the topnav */
+        .dropdown .dropbtn {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 17px;
+        border: none;
+        outline: none;
+        color: black;
+        padding: 27px 10px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+        width: 90px;
+        font-size: small;
+        }
+
+        .dropdown-content {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        width: 90px;
+        text-align: center;
+        font-size: small;
+        }
+
+        .dropdown-content a {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        float: none;
+        color: black;
+        padding: 12px 12px;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        font-size: small;
+        }
+
+        .dropdown:hover .dropbtn {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: deeppink;
+        color: white;
+        }
+
+        .dropdown-content a:hover {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: #ddd;
+        color: black;
+        }
+
+        .dropdown:hover .dropdown-content {
+        display: block;
+        }
+
+        .container {
+            width: 500px;
+            height: 620px;
+            background-color: #ddd;
+            margin: auto;
+            margin-top: 10px;
+            padding: 60px;
+            padding-top: 10px;
+            text-align: center;
+        }
+        .unmatched {
+            width: 110px;
+            height: 135px;
+            background-color: pink;
+            margin: 5px;
+            display: inline-block;
+            color: black;
+            overflow: hidden;
+        }
+        .matched {
+            width: 110px;
+            height: 135px;
+            background-color: #fa68ac;
+            margin: 5px;
+            display: inline-block;
+            color: black;
+            overflow: hidden;
+        }
+        img {
+            max-width: 100px;
+            max-height: 100px;
+            width:100px;
+
+            overflow: hidden;}
+        
+        .button{
+            background-color: pink ; 
+            padding-left: 30px;  
+            padding-top: 30px;  
+            padding-bottom: 30px;  
+            padding-right: 30px; 
+            font-size: large; 
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-left: auto;
+            margin-right: auto;
+            vertical-align: middle;
+        }
+        .button:hover {
+            cursor:pointer;
+        }
+        a {
+            font-size: smaller;
+        }  
+        a:hover {
+            color: purple;
+        }
+        a:hover[name="icon"]{
+            color:deeppink;
+        }
+        a[name="icon"]{
+            margin-top: -5px;
+        }
+
+        .popup{
+            width: 50%;
+            background-color: lightgray;
+            position: absolute;
+            margin-left: 25%;
+            margin-top: 120px;
+            padding-left: 10px;
+            padding-top: 10px;
+            z-index: 2;
+            padding-bottom: 10px;
+
+        }
+        .close{
+            color:black;
+        }
+        .close:hover{
+            color: red;
+        }
+    </style>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <!-- <script src="js/jquery-3.7.1.min.js"></script>
+        <script src="js/rango-jquery.js"></script>    -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+        <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+    </head>
+    <div class="topnav" id="myTopnav">
+        <h1>Memory game</h1>
+        <a name="icon"><i class="fa fa-bookmark" style="font-size:30px" name="bookmarkicon"></i></a>
+        
+        {# Don't forget that one ! #}
+        {% load static %}
+
+        {% block content %}
+        <div class="search">
+            <form action="" method="post">
+                <div class="bar">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <table style="display: none">
+                        {{ view.formset.empty_form }}
+                    </table>
+
+                    <table>
+                        {{ view.formset }}
+                    </table>
+                </div>               
+                <input type="submit" style="font-size: small; display: inline-block !important; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width:fit-content; background-color: lightgray; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; float: inline-end; margin-right: 10px; margin-top: -45px; z-index: 2 !important; position: relative;" name="search"  value="Search"></input>
+            </form>
+        </div>
+        {% endblock %}
+
+        {% block footer %}
+        <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+
+        {{ form.media }}        
+        {% endblock %}
+        <div class="selects">
+            <div class="dropdown">
+                <button class="dropbtn">Games &#9660;
+                </button>
+                <div class="dropdown-content">
+                    <a href="http://127.0.0.1:8000/crypto/game/hangman">Hangman</a>
+                    <a href="http://127.0.0.1:8000/crypto/game/memory">Memory</a>
+                </div>
+            </div>
+            <a href="http://127.0.0.1:8000/crypto/form/"; style="float: right;"; >Compare</a>
+            <a href="http://127.0.0.1:8000/crypto/usd"; style="float: right;">Home</a>
+        
+        </div>
+    </div>
+    <div class="popup" >
+        <h2 style="margin-top: 0px;">My Bookmarks</h2>
+        {% for page in favpages %}
+            <a href={{page.url}} name="{{page.name}}/{{page.currency}}/{{page.time}}">{{page.name}} {{page.currency}} {{page.time}}</a> <a class="close" name="{{page.name}}/{{page.currency}}/{{page.time}}" id="{{page.name}}/{{page.currency}}/{{page.time}}">&#10006;</a>
+            <br>
+        {% endfor %}
+    </div>
+    <script>
+        $(document).ready(function() {
+            let status=false;
+            $(".popup").hide();
+            $("i").on("click",function() {
+                if (status==false){
+                    $(".popup").show();
+                    status= true;
+                }
+                else{
+                    $(".popup").hide();
+                    status=false
+                }
+            })
+            $(".close").on("click", function(){
+                var id = $(this)[0].id;
+                var data= id.split("/");
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://127.0.0.1:8000/crypto/ajax/delete/',
+                    data: {name: data[0], currency: data[1], time: data[2]},
+                    success: function(reply){
+                        $("a[name='"+id+"']").hide();
+                    },
+                })
+            })
+        })
+    </script>
+    <script>
+        let matched = 0;
+        let lst = {{data|safe}};
+        $(document).ready(function() {
+            let clicked = 0;
+            let clicked_name = [];
+            let clicked_id = [];
+            let start = false;
+            $('.timer').hide();
+            $('#score').hide();
+            $(".unmatched").hide();
+            $('#win').hide();
+            $('#lose').hide();
+            $('#playagain').hide();
+            $(".start").on("click", function(){
+                $(".start").hide();
+                $('.timer').show();
+                $('#score').show();
+                $(".unmatched").show();
+                var count = 300;
+                var doUpdate = function() {
+                    $('.timer').each(function() {
+                    count = parseFloat($(this).html().slice(-4));
+                    if (count != 0) {
+                        $(this).html("Countdown: " + String((count -0.1).toFixed(1)));
+                    }
+                    else{ 
+                        clearInterval(timer);
+                        $(".unmatched").html("");
+                        for (var i = 0; i < 16; i++){
+                            if ($("#"+i).hasClass('unmatched') == true){
+                                $("#"+i).prepend('<a href="http://127.0.0.1:8000/crypto/'+lst[$("#"+i)[0].id][2]+',usd/7">'+lst[$("#"+i)[0].id][0]);
+                                $("#"+i).prepend($('<br>'));
+                                $("#"+i).prepend($('<img>',{src:lst[$("#"+i)[0].id][1]}));
+                            }
+                        }
+                        $("#lose").show()
+                        $("#playagain").show()
+                    }
+                    });
+                };
+                const timer = setInterval(doUpdate, 100);               
+                $("#score").text("Score: "+matched);
+                var waiting=false;
+                $(".unmatched").on("click", function() {
+                    if (clicked <= 1 && matched <= 14 && count > 0 && waiting==false){
+                        var id = $(this)[0].id;
+                        if (clicked_id[0] != id){
+                            clicked += 1;
+                            clicked_name.push(lst[id][0]);
+                            clicked_id.push(id);
+                            
+                            $(this).prepend('<a href="http://127.0.0.1:8000/crypto/'+lst[id][2]+',usd/7">'+lst[id][0]);
+                            $(this).prepend($('<br>'));
+                            $(this).prepend($('<img>',{src:lst[id][1]}));
+                            if (clicked==2){                                          
+                                if (clicked_name[1] == clicked_name[0]){    
+                                    matched += 2;
+                                    clicked = 0;
+                                    $("#"+clicked_id[0]).addClass('matched').removeClass('unmatched');
+                                    $("#"+clicked_id[1]).addClass('matched').removeClass('unmatched');
+                                    $("#score").text("Score: "+matched);
+                                    if (matched==16){
+                                        $("#win").show();
+                                        $("#playagain").show();
+                                        clearInterval(timer);
+                                    }
+                                }
+                                else {
+                                    if (count > 10){
+                                        waiting = true;
+                                        setTimeout(
+                                            function() 
+                                            {$(".unmatched").html("");
+                                            clicked = 0;
+                                            waiting=false;
+                                            }, 1000);
+                                    }                                    
+                                }  
+                                clicked_name = [];
+                                clicked_id = [];                  
+                            }
+                        }                        
+                    }                   
+                })          
+            })            
+        })
+    </script>
+    <h2 id="win" style="font-size: x-large;">You won!</h2>
+    <h2 id="lose" style="font-size: x-large;">You lost!</h2>
+    <div id="playagain">
+        <form action="http://127.0.0.1:8000/crypto/game/memory">
+            <input type="submit" value="Play again" style="background-color: pink ; padding-left: 10px;  padding-top: 5px;  padding-bottom: 5px;  padding-right: 10px; font-size: x-large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: center; display: block;"/>
+        </form>
+    </div>
+    <div class="container">
+        <div class="start">
+            <h2 class="button">Start</h2>
+            <h2>神経衰弱</h2>
+        </div>        
+        <h2 id="score" style="float: left;"></h2>
+        <h2 class="timer" style="float: right;">Countdown: 30.0</h2>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="unmatched" id = "0"></div>
+        <div class="unmatched" id = "1"></div>
+        <div class="unmatched" id = "2"></div>
+        <div class="unmatched" id = "3"></div>
+        <br>
+        <div class="unmatched" id = "4"></div>
+        <div class="unmatched" id = "5"></div>
+        <div class="unmatched" id = "6"></div>
+        <div class="unmatched" id = "7"></div>
+        <br>
+        <div class="unmatched" id = "8"></div>
+        <div class="unmatched" id = "9"></div>
+        <div class="unmatched" id = "10"></div>
+        <div class="unmatched" id = "11"></div>
+        <br>
+        <div class="unmatched" id = "12"></div>
+        <div class="unmatched" id = "13"></div>
+        <div class="unmatched" id = "14"></div>
+        <div class="unmatched" id = "15"></div>
+    </div>
+    
+</html>

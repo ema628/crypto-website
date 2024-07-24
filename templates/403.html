@@ -1,0 +1,193 @@
+<html>
+    <style>
+        html {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; margin-left: 0px; } 
+        h1 {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;background-color: pink; padding: 10px 20px; font-weight: bold; float: left; margin-top: 5px;}
+        h2 {font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal}
+        .search .errorlist{
+            list-style-type: none;
+            font-size: small;
+            margin-top: -17px;
+            position: absolute;
+            padding-left: 120px !important;
+        }
+        .bar {
+            margin-right: -40px !important;
+            z-index: 1 !important;
+            min-width: none !important;
+        }
+        .bar span.select2.select2-container{
+            min-width: 200px !important;
+            width: 200px !important;
+            margin-right: 120px;
+        }
+        .search{
+            padding-left: 10px;
+            float: right;
+            margin-top: 6px;
+            min-width: none !important;
+        }
+        .search .select2-selection{
+            min-width: none !important;
+            width: 200px !important;
+        }
+
+        .search .select2-selection__arrow{
+            background-color: white;
+        }
+        span.select2-dropdown{
+            min-width: none !important;
+            width: 250px !important;
+        }
+        .select2-results__option--highlighted {
+            background: #fa68ac !important;
+        }
+
+        .select2-selection__arrow {
+            background-color: pink ;
+        }
+
+        .select2-results__option[aria-selected="true"] {
+            background-color: pink !important;
+            color: #393A3B; 
+        }
+
+        .select2-results__option{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            
+        }
+        
+            
+        .topnav {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: pink;
+        overflow: hidden;
+        height: 70px
+        }
+
+        .topnav a {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        float: left;
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 25px 15px;
+        text-decoration: none;
+        font-size: 17px;
+        }
+
+        .topnav a:hover {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: deeppink !important;
+        color: white;
+        }
+
+        .topnav a.active {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: #fa68ac;
+        color: white;
+
+        }
+
+        .dropdown {
+        float: right;
+        overflow: hidden;
+        
+        }
+
+        /* Style the dropdown button to fit inside the topnav */
+        .dropdown .dropbtn {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 17px;
+        border: none;
+        outline: none;
+        color: black;
+        padding: 27px 10px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+        width: 90px;
+        font-size: small;
+        }
+
+        .dropdown-content {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        width: 90px;
+        text-align: center;
+        font-size: small;
+        }
+
+        .dropdown-content a {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        float: none;
+        color: black;
+        padding: 12px 12px;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        font-size: small;
+        }
+
+        .dropdown:hover .dropbtn {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: deeppink;
+        color: white;
+        }
+
+        .dropdown-content a:hover {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: #ddd;
+        color: black;
+        }
+
+        .dropdown:hover .dropdown-content {
+        display: block;
+        }
+    </style>
+    <div class="topnav" id="myTopnav">
+        <h1>403 error</h1>
+        {# Don't forget that one ! #}
+        {% load static %}
+
+        {% block content %}
+        <div class="search">
+            <form action="" method="post">
+                <div class="bar">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <table style="display: none">
+                        {{ view.formset.empty_form }}
+                    </table>
+
+                    <table>
+                        {{ view.formset }}
+                    </table>
+                </div>               
+                <input type="submit" style="font-size: small; display: inline-block !important; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width:fit-content; background-color: lightgray; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; float: inline-end; margin-right: 10px; margin-top: -45px; z-index: 2 !important; position: relative;" name="search"  value="Search"></input>
+            </form>
+        </div>
+        {% endblock %}
+
+        {% block footer %}
+        <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+
+        {{ form.media }}        
+        {% endblock %}
+        <div class="dropdown">
+            <button class="dropbtn">Games &#9660;
+            </button>
+            <div class="dropdown-content">
+                <a href="http://127.0.0.1:8000/crypto/game/hangman">Hangman</a>
+                <a href="http://127.0.0.1:8000/crypto/game/memory">Memory</a>
+            </div>
+        </div>
+        <a href="http://127.0.0.1:8000/crypto/form/"; style="float: right;"; >Compare</a>
+        <a href="http://127.0.0.1:8000/crypto/usd"; style="float: right;">Home</a>
+    </div>
+    <h2>Sorry, please go back to another page.</h2>
+</html>
